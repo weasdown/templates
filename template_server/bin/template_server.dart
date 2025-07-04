@@ -5,9 +5,10 @@
 import 'dart:io';
 
 import 'package:template_server/middleware/auth.dart';
-import 'package:template_server/routes/booking.dart';
-import 'package:template_server/routes/continent.dart';
-import 'package:template_server/routes/destination.dart';
+// TODO remove Compass imports
+// import 'package:template_server/routes/booking.dart';
+// import 'package:template_server/routes/continent.dart';
+// import 'package:template_server/routes/destination.dart';
 import 'package:template_server/routes/login.dart';
 import 'package:template_server/routes/user.dart';
 import 'package:shelf/shelf.dart';
@@ -16,9 +17,10 @@ import 'package:shelf_router/shelf_router.dart';
 
 // Configure routes.
 final _router = Router()
-  ..get('/continent', continentHandler)
-  ..mount('/destination', DestinationApi().router.call)
-  ..mount('/booking', BookingApi().router.call)
+  // TODO remove Compass get()/mount() calls
+  // ..get('/continent', continentHandler)
+  // ..mount('/destination', DestinationApi().router.call)
+  // ..mount('/booking', BookingApi().router.call)
   ..mount('/user', UserApi().router.call)
   ..mount('/login', LoginApi().router.call);
 
