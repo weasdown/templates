@@ -26,7 +26,7 @@ class Destination with _$Destination {
     /// e.g. 'Alaska is a haven for outdoor enthusiasts ...'
     required String knownFor,
 
-    /// e.g. ['Mountain', 'Off-the-beaten-path', 'Wildlife watching']
+    /// e.g. `['Mountain', 'Off-the-beaten-path', 'Wildlife watching']`
     required List<String> tags,
 
     /// e.g. 'https://storage.googleapis.com/tripedia-images/destinations/alaska.jpg'
