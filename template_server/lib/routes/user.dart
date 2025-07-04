@@ -8,11 +8,13 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 import '../config/constants.dart';
+import 'api.dart';
 
 /// Implements a simple user API.
 ///
 /// This API only returns a hardcoded user for demonstration purposes.
-class UserApi {
+class UserApi implements Api {
+  @override
   Router get router {
     final router = Router();
 

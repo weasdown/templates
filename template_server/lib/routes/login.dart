@@ -10,6 +10,7 @@ import 'package:shelf_router/shelf_router.dart';
 import '../config/constants.dart';
 import '../model/login_request/login_request.dart';
 import '../model/login_response/login_response.dart';
+import 'api.dart';
 
 /// Implements a simple login API.
 ///
@@ -21,7 +22,8 @@ import '../model/login_response/login_response.dart';
 /// then returns a hardcoded token and a user id.
 ///
 /// This token does not expire and is not secure.
-class LoginApi {
+class LoginApi implements Api {
+  @override
   Router get router {
     final router = Router();
 

@@ -8,8 +8,10 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 import '../config/assets.dart';
+import 'api.dart';
 
-class DestinationApi {
+class DestinationApi implements Api {
+  @override
   Router get router {
     final router = Router();
 
@@ -21,10 +23,9 @@ class DestinationApi {
     });
 
     router.get('/<id>/activity', (Request request, String id) {
-      final list =
-          Assets.activities
-              .where((activity) => activity.destinationRef == id)
-              .toList();
+      final list = Assets.activities
+          .where((activity) => activity.destinationRef == id)
+          .toList();
       return Response.ok(
         json.encode(list),
         headers: {'Content-Type': 'application/json'},

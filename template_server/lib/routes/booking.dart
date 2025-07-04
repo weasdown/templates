@@ -9,6 +9,7 @@ import 'package:shelf_router/shelf_router.dart';
 
 import '../config/assets.dart';
 import '../model/booking/booking.dart';
+import 'api.dart';
 
 /// Allows the user to save and restore bookings.
 ///
@@ -18,15 +19,14 @@ import '../model/booking/booking.dart';
 /// For demo purposes, this API includes a default pre-generated booking.
 ///
 /// The [Booking.id] is also the index in the bookings list.
-class BookingApi {
+class BookingApi implements Api {
   BookingApi() {
     // Create a default booking
     final destination = Assets.destinations.first;
-    final activitiesRef =
-        Assets.activities
-            .where((activity) => activity.destinationRef == destination.ref)
-            .map((activity) => activity.ref)
-            .toList();
+    final activitiesRef = Assets.activities
+        .where((activity) => activity.destinationRef == destination.ref)
+        .map((activity) => activity.ref)
+        .toList();
     _bookings.add(
       Booking(
         id: _sequentialId++,
@@ -46,6 +46,7 @@ class BookingApi {
   // Used to generate IDs for bookings
   int _sequentialId = 0;
 
+  @override
   Router get router {
     final router = Router();
 
@@ -60,8 +61,9 @@ class BookingApi {
     // Get a booking by id
     router.get('/<id>', (Request request, String id) {
       final bookingId = int.parse(id);
-      final booking =
-          _bookings.where((booking) => booking.id == bookingId).firstOrNull;
+      final booking = _bookings
+          .where((booking) => booking.id == bookingId)
+          .firstOrNull;
 
       if (booking == null) {
         return Response.notFound('Invalid id');
@@ -102,8 +104,9 @@ class BookingApi {
     // Delete booking
     router.delete('/<id>', (Request request, String id) async {
       final bookingId = int.parse(id);
-      final booking =
-          _bookings.where((booking) => booking.id == bookingId).firstOrNull;
+      final booking = _bookings
+          .where((booking) => booking.id == bookingId)
+          .firstOrNull;
       if (booking == null) {
         return Response.notFound('Invalid id');
       }
