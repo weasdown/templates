@@ -8,7 +8,7 @@ import 'package:shelf/shelf.dart';
 
 import '../model/continent/continent.dart';
 
-final _continents = [
+final List<Continent> _continents = <Continent>[
   Continent(
     name: 'Europe',
     imageUrl: 'https://rstr.in/google/tripedia/TmR12QdlVTT',
