@@ -26,7 +26,7 @@ void main() {
   setUp(() async {
     p = await Process.start(
       'dart',
-      ['run', 'bin/compass_server.dart'],
+      ['run', 'bin/template_server.dart'],
       environment: {'PORT': port},
     );
     // Wait for server to start and print to stdout.
